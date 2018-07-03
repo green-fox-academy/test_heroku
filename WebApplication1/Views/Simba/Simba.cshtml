@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Simba</title>
+    <style>
+        body 
+        {
+            background-color: wheat;
+        }
+        p
+        {
+            font-family:Arial, Helvetica, sans-serif;
+            color:lightcoral;
+        }
+        table, th, td
+        {
+            border: 1px solid salmon;
+            font-size: 20px;
+            color: salmon;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <table style="width:75%">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Ƶ</th>
+            <th>Type</th>
+            <th>King?</th>
+            <th>Good?</th>
+        </tr>
+    @foreach(var item in @Model)
+    {
+        if (item.IsKing == true)
+        {
+            <tr>
+            <td><font color="mediumspringgreen">@item.ID</font></td>
+            <td><font color="darkturquoise">@item.Name</font></td>
+            <td><font color="magenta">@item.Balance</font></td>
+            <td><font color="darkred">@item.AnimalType</font></td>
+            <td><font color="mediumslateblue">@item.IsKing</font></td>
+            <td><font color="darkblue">@item.IsGood</font></td>
+            </tr>
+        }
+
+        else
+        {
+            <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.Balance.00</td>
+            <td>@item.AnimalType</td>
+            <td>@item.IsKing</td>
+            <td>@item.IsGood</td>
+            </tr>
+        }
+    }
+    </table>
+    <form action="Add" method="post">
+        <input type="number" name="index" />
+        <input type="submit" value="Increase balance">
+    </form>
+    <p>Enter the ID of the animal you would like to increase the balance of.</p>
+    <p>(the numbers start at zero, the good ones get Ƶ100, while the bad ones only receive Ƶ10)</p>
+</body>
+</html>
